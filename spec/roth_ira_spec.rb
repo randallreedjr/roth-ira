@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe RothIRA do
   it 'should return correct version string' do
-    expect(RothIRA::VERSION).to eq('0.0.1')
+    expect(RothIRA::VERSION).to eq('0.0.2')
   end
 
   context 'Single' do
