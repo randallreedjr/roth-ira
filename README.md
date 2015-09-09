@@ -5,7 +5,14 @@ This Ruby gem allows you to calculate maximum Roth IRA contributions based on Mo
 Contribution and income limits may vary every year, and thus changes to the code will be required. This gem is currently up to date for __Tax Year 2015__.
 
 ## Usage
-Call method `RothIRA.calculate_limit` and pass four parameters: MAGI, filing status as a symbol (:single, :married_filing_jointly), age, and (optionally) spouse's age.
+
+First, you will need to require the gem.
+
+```
+require "roth_ira"
+```
+
+Next, call the method `RothIRA.calculate_limit` and pass four parameters: MAGI, filing status as a symbol (:single, :married_filing_jointly), age, and (optionally) spouse's age.
 
 ```
 RothIRA.calculate_limit(75000, :single, 25)
