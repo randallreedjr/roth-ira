@@ -49,6 +49,10 @@ class RothIRA
     self.class.limits[year][filing_status][:contribution_limit]
   end
 
+  def minimum_phase_out
+    self.class.limits[year][filing_status][:minimum_phase_out]
+  end
+
   def calculate_catch_up
     eligible_for_catch_up = [primary_eligible_for_catch_up, spouse_eligible_for_catch_up]
     eligible_for_catch_up.count(true) * catch_up_contribution
@@ -79,8 +83,8 @@ class RothIRA
   end
 
   def minimum_200(amount)
-    # IRS instructions allow minimum contribution of $200 in phase-out range
-    amount < 200 ? 200 : amount
+    # IRS instructions allow minimum contribution of $200 in phase-out range (per person)
+    amount < minimum_phase_out ? minimum_phase_out : amount
   end
 
   def self.limits
@@ -89,12 +93,20 @@ class RothIRA
         single: {
           lower_income_limit: 116000,
           upper_income_limit: 131000,
-          contribution_limit: 5500
+          contribution_limit: 5500,
+          minimum_phase_out: 200
+        },
+        head_of_household: {
+          lower_income_limit: 116000,
+          upper_income_limit: 131000,
+          contribution_limit: 5500,
+          minimum_phase_out: 200
         },
         married_filing_jointly: {
           lower_income_limit: 183000,
           upper_income_limit: 193000,
-          contribution_limit: 11000
+          contribution_limit: 11000,
+          minimum_phase_out: 400
         },
         catch_up_contribution: 1000,
         catch_up_age: 50
@@ -103,12 +115,20 @@ class RothIRA
         single: {
           lower_income_limit: 117000,
           upper_income_limit: 132000,
-          contribution_limit: 5500
+          contribution_limit: 5500,
+          minimum_phase_out: 200
+        },
+        head_of_household: {
+          lower_income_limit: 117000,
+          upper_income_limit: 132000,
+          contribution_limit: 5500,
+          minimum_phase_out: 200
         },
         married_filing_jointly: {
           lower_income_limit: 184000,
           upper_income_limit: 194000,
-          contribution_limit: 11000
+          contribution_limit: 11000,
+          minimum_phase_out: 400
         },
         catch_up_contribution: 1000,
         catch_up_age: 50
