@@ -1,3 +1,3 @@
-module RothIRA
-  VERSION = '0.0.2'
+class RothIRA
+  VERSION = '1.0.0'
 end
