@@ -1,124 +1,150 @@
 require 'spec_helper'
 
 describe RothIRA do
-  it 'should return correct version string' do
+  it 'returns correct version string' do
     expect(RothIRA::VERSION).to eq('1.0.0')
   end
 
   context 'Tax year 2015' do
     let(:roth_ira) { RothIRA.new(2015) }
     context 'Single' do
-      it 'should return correct value for low income single' do
-        expect(roth_ira.calculate(1500, :single, 25)).to eq(1500)
+      it 'returns correct value for low income' do
+        result = roth_ira.calculate(1_500, :single, 25)
+        expect(result).to eq(1500)
       end
 
-      it 'should return correct value for moderate income single' do
-        expect(roth_ira.calculate(75000, :single, 25)).to eq(5500)
+      it 'returns correct value for moderate income' do
+        result = roth_ira.calculate(75_000, :single, 25)
+        expect(result).to eq(5500)
       end
 
-      it 'should return correct value for high income single' do
-        expect(roth_ira.calculate(135000, :single, 25)).to eq(0)
+      it 'returns correct value for high income' do
+        result = roth_ira.calculate(135_000, :single, 25)
+        expect(result).to eq(0)
       end
 
-      it 'should return correct value for phase-out income single' do
-        expect(roth_ira.calculate(122800, :single, 25)).to eq(3010)
+      it 'returns correct value for phase-out income' do
+        result = roth_ira.calculate(122_800, :single, 25)
+        expect(result).to eq(3_010)
       end
 
-      it 'should correctly handle minimum phase out amount of $200' do
-        expect(roth_ira.calculate(130900, :single, 25)).to eq(200)
+      it 'correctly handles minimum phase out amount of $200' do
+        result = roth_ira.calculate(130_900, :single, 25)
+        expect(result).to eq(200)
       end
 
       context 'over 50' do
-        it 'should return correct value for low income single over 50' do
-          expect(roth_ira.calculate(1500, :single, 50)).to eq(1500)
+        it 'returns correct value for low income' do
+          result = roth_ira.calculate(1_500, :single, 50)
+          expect(result).to eq(1_500)
         end
 
-        it 'should return correct value for moderate income single over 50' do
-          expect(roth_ira.calculate(75000, :single, 50)).to eq(6500)
+        it 'returns correct value for moderate income' do
+          result = roth_ira.calculate(75_000, :single, 50)
+          expect(result).to eq(6_500)
         end
 
-        it 'should return correct value for phase-out income single over 50' do
-          expect(roth_ira.calculate(121600, :single, 50)).to eq(4080)
+        it 'returns correct value for phase-out income' do
+          result = roth_ira.calculate(121_600, :single, 50)
+          expect(result).to eq(4_080)
         end
       end
     end
 
     context 'Head of Household' do
-      it 'should return correct value for low income head of household' do
-        expect(roth_ira.calculate(1500, :head_of_household, 25)).to eq(1500)
+      it 'returns correct value for low income' do
+        result = roth_ira.calculate(1_500, :head_of_household, 25)
+        expect(result).to eq(1_500)
       end
 
-      it 'should return correct value for moderate income head of household' do
-        expect(roth_ira.calculate(75000, :head_of_household, 25)).to eq(5500)
+      it 'returns correct value for moderate income' do
+        result = roth_ira.calculate(75_000, :head_of_household, 25)
+        expect(result).to eq(5_500)
       end
 
-      it 'should return correct value for high income head of household' do
-        expect(roth_ira.calculate(135000, :head_of_household, 25)).to eq(0)
+      it 'returns correct value for high income' do
+        result = roth_ira.calculate(135_000, :head_of_household, 25)
+        expect(result).to eq(0)
       end
 
-      it 'should return correct value for phase-out income head of household' do
-        expect(roth_ira.calculate(122800, :head_of_household, 25)).to eq(3010)
+      it 'returns correct value for phase-out income' do
+        result = roth_ira.calculate(122_800, :head_of_household, 25)
+        expect(result).to eq(3_010)
       end
 
-      it 'should correctly handle minimum phase out amount of $200' do
-        expect(roth_ira.calculate(130900, :head_of_household, 25)).to eq(200)
+      it 'correctly handles minimum phase out amount of $200' do
+        result = roth_ira.calculate(130_900, :head_of_household, 25)
+        expect(result).to eq(200)
       end
 
       context 'over 50' do
-        it 'should return correct value for low income head of household over 50' do
-          expect(roth_ira.calculate(1500, :head_of_household, 50)).to eq(1500)
+        it 'returns correct value for low income' do
+          result = roth_ira.calculate(1_500, :head_of_household, 50)
+          expect(result).to eq(1_500)
         end
 
-        it 'should return correct value for moderate income head of household over 50' do
-          expect(roth_ira.calculate(75000, :head_of_household, 50)).to eq(6500)
+        it 'returns correct value for moderate income' do
+          result = roth_ira.calculate(75_000, :head_of_household, 50)
+          expect(result).to eq(6_500)
         end
 
-        it 'should return correct value for phase-out income head of household over 50' do
-          expect(roth_ira.calculate(121600, :head_of_household, 50)).to eq(4080)
+        it 'returns correct value for phase-out income' do
+          result = roth_ira.calculate(121_600, :head_of_household, 50)
+          expect(result).to eq(4_080)
         end
       end
     end
 
     context 'Married Filing Jointly' do
-      it 'should return correct value for low income married filing jointly' do
-        expect(roth_ira.calculate(9900, :married_filing_jointly, 25, 26)).to eq(9900)
+      it 'returns correct value for low income' do
+        result = roth_ira.calculate(9_900, :married_filing_jointly, 25, 26)
+        expect(result).to eq(9_900)
       end
 
-      it 'should return correct value for moderate income married filing jointly' do
-        expect(roth_ira.calculate(135000, :married_filing_jointly, 25, 26)).to eq(11000)
+      it 'returns correct value for moderate income' do
+        result = roth_ira.calculate(135_000, :married_filing_jointly, 25, 26)
+        expect(result).to eq(11_000)
       end
 
-      it 'should return correct value for high income married filing jointly' do
-        expect(roth_ira.calculate(195000, :married_filing_jointly, 25, 26)).to eq(0)
+      it 'returns correct value for high income' do
+        result = roth_ira.calculate(195_000, :married_filing_jointly, 25, 26)
+        expect(result).to eq(0)
       end
 
-      it 'should return correct value for phase-out income married filing jointly' do
-        expect(roth_ira.calculate(189500, :married_filing_jointly, 25, 26)).to eq(3850)
+      it 'returns correct value for phase-out income' do
+        result = roth_ira.calculate(189_500, :married_filing_jointly, 25, 26)
+        expect(result).to eq(3_850)
       end
 
       context 'over 50' do
-        it 'should return correct value for low income married filing jointly, with one over 50' do
-          expect(roth_ira.calculate(9900, :married_filing_jointly, 50, 49)).to eq(9900)
+        it 'returns correct value for low income, with one over 50' do
+          result = roth_ira.calculate(9_900, :married_filing_jointly, 50, 49)
+          expect(result).to eq(9_900)
         end
 
-        it 'should return correct value for moderate income married filing jointly, with one over 50' do
-          expect(roth_ira.calculate(135000, :married_filing_jointly, 50, 49)).to eq(12000)
+        it 'returns correct value for moderate income, with one over 50' do
+          result = roth_ira.calculate(135_000, :married_filing_jointly, 50, 49)
+          expect(result).to eq(12_000)
         end
 
-        it 'should return correct value for moderate income married filing jointly, with both over 50' do
-          expect(roth_ira.calculate(135000, :married_filing_jointly, 50, 51)).to eq(13000)
+        it 'returns correct value for moderate income, with both over 50' do
+          result = roth_ira.calculate(135_000, :married_filing_jointly, 50, 51)
+          expect(result).to eq(13_000)
         end
 
-        it 'should return correct value for phase-out income married filing jointly, with one over 50' do
-          expect(roth_ira.calculate(189500, :married_filing_jointly, 50, 49)).to eq(4200)
+        it 'returns correct value for phase-out income, with one over 50' do
+          result = roth_ira.calculate(189_500, :married_filing_jointly, 50, 49)
+          expect(result).to eq(4_200)
         end
 
-        it 'should return correct value for phase-out income married filing jointly, with both over 50' do
-          expect(roth_ira.calculate(189500, :married_filing_jointly, 50, 65)).to eq(4550)
+        it 'returns correct value for phase-out income, with both over 50' do
+          result = roth_ira.calculate(189_500, :married_filing_jointly, 50, 65)
+          expect(result).to eq(4_550)
         end
 
-        it 'should return correct value for high income married filing jointly, with both over 50' do
-          expect(roth_ira.calculate(195000, :married_filing_jointly, 55, 62)).to eq(0)
+        it 'returns correct value for high income, with both over 50' do
+          result = roth_ira.calculate(195_000, :married_filing_jointly, 55, 62)
+          expect(result).to eq(0)
         end
       end
     end
@@ -127,121 +153,148 @@ describe RothIRA do
   context 'Tax year 2016' do
     let(:roth_ira) { RothIRA.new(2016) }
     context 'Single' do
-      it 'should return correct value for low income single' do
-        expect(roth_ira.calculate(1500, :single, 25)).to eq(1500)
+      it 'returns correct value for low income' do
+        result = roth_ira.calculate(1_500, :single, 25)
+        expect(result).to eq(1_500)
       end
 
-      it 'should return correct value for moderate income single' do
-        expect(roth_ira.calculate(75000, :single, 25)).to eq(5500)
+      it 'returns correct value for moderate income' do
+        result = roth_ira.calculate(75_000, :single, 25)
+        expect(result).to eq(5_500)
       end
 
-      it 'should return correct value for high income single' do
-        expect(roth_ira.calculate(135000, :single, 25)).to eq(0)
+      it 'returns correct value for high income' do
+        result = roth_ira.calculate(135_000, :single, 25)
+        expect(result).to eq(0)
       end
 
-      it 'should return correct value for phase-out income single' do
-        expect(roth_ira.calculate(122800, :single, 25)).to eq(3380)
+      it 'returns correct value for phase-out income' do
+        result = roth_ira.calculate(122_800, :single, 25)
+        expect(result).to eq(3_380)
       end
 
-      it 'should correctly handle minimum phase out amount of $200' do
-        expect(roth_ira.calculate(131900, :single, 25)).to eq(200)
+      it 'correctly handles minimum phase out amount of $200' do
+        result = roth_ira.calculate(131_900, :single, 25)
+        expect(result).to eq(200)
       end
 
       context 'over 50' do
-        it 'should return correct value for low income single over 50' do
-          expect(roth_ira.calculate(1500, :single, 50)).to eq(1500)
+        it 'returns correct value for low income' do
+          result = roth_ira.calculate(1_500, :single, 50)
+          expect(result).to eq(1_500)
         end
 
-        it 'should return correct value for moderate income single over 50' do
-          expect(roth_ira.calculate(75000, :single, 50)).to eq(6500)
+        it 'returns correct value for moderate income' do
+          result = roth_ira.calculate(75_000, :single, 50)
+          expect(result).to eq(6_500)
         end
 
-        it 'should return correct value for phase-out income single over 50' do
-          expect(roth_ira.calculate(121600, :single, 50)).to eq(4510)
+        it 'returns correct value for phase-out income' do
+          result = roth_ira.calculate(121_600, :single, 50)
+          expect(result).to eq(4_510)
         end
       end
     end
 
     context 'Head of Household' do
-      it 'should return correct value for low income head of household' do
-        expect(roth_ira.calculate(1500, :head_of_household, 25)).to eq(1500)
+      it 'returns correct value for low income' do
+        result = roth_ira.calculate(1_500, :head_of_household, 25)
+        expect(result).to eq(1_500)
       end
 
-      it 'should return correct value for moderate income head of household' do
-        expect(roth_ira.calculate(75000, :head_of_household, 25)).to eq(5500)
+      it 'returns correct value for moderate income' do
+        result = roth_ira.calculate(75_000, :head_of_household, 25)
+        expect(result).to eq(5_500)
       end
 
-      it 'should return correct value for high income head of household' do
-        expect(roth_ira.calculate(135000, :head_of_household, 25)).to eq(0)
+      it 'returns correct value for high income' do
+        result = roth_ira.calculate(135_000, :head_of_household, 25)
+        expect(result).to eq(0)
       end
 
-      it 'should return correct value for phase-out income head of household' do
-        expect(roth_ira.calculate(122800, :head_of_household, 25)).to eq(3380)
+      it 'returns correct value for phase-out income' do
+        result = roth_ira.calculate(122_800, :head_of_household, 25)
+        expect(result).to eq(3_380)
       end
 
-      it 'should correctly handle minimum phase out amount of $200' do
-        expect(roth_ira.calculate(131900, :head_of_household, 25)).to eq(200)
+      it 'correctly handles minimum phase out amount of $200' do
+        result = roth_ira.calculate(131_900, :head_of_household, 25)
+        expect(result).to eq(200)
       end
 
       context 'over 50' do
-        it 'should return correct value for low income head of household over 50' do
-          expect(roth_ira.calculate(1500, :head_of_household, 50)).to eq(1500)
+        it 'returns correct value for low income' do
+          result = roth_ira.calculate(1_500, :head_of_household, 50)
+          expect(result).to eq(1_500)
         end
 
-        it 'should return correct value for moderate income head of household over 50' do
-          expect(roth_ira.calculate(75000, :head_of_household, 50)).to eq(6500)
+        it 'returns correct value for moderate income' do
+          result = roth_ira.calculate(75_000, :head_of_household, 50)
+          expect(result).to eq(6_500)
         end
 
-        it 'should return correct value for phase-out income head of household over 50' do
-          expect(roth_ira.calculate(121600, :head_of_household, 50)).to eq(4510)
+        it 'returns correct value for phase-out income' do
+          result = roth_ira.calculate(121_600, :head_of_household, 50)
+          expect(result).to eq(4_510)
         end
       end
     end
 
     context 'Married Filing Jointly' do
-      it 'should return correct value for low income married filing jointly' do
-        expect(roth_ira.calculate(9900, :married_filing_jointly, 25, 26)).to eq(9900)
+      it 'returns correct value for low income' do
+        result = roth_ira.calculate(9_900, :married_filing_jointly, 25, 26)
+        expect(result).to eq(9_900)
       end
 
-      it 'should return correct value for moderate income married filing jointly' do
-        expect(roth_ira.calculate(135000, :married_filing_jointly, 25, 26)).to eq(11000)
+      it 'returns correct value for moderate income' do
+        result = roth_ira.calculate(135_000, :married_filing_jointly, 25, 26)
+        expect(result).to eq(11_000)
       end
 
-      it 'should return correct value for high income married filing jointly' do
-        expect(roth_ira.calculate(195000, :married_filing_jointly, 25, 26)).to eq(0)
+      it 'returns correct value for high income' do
+        result = roth_ira.calculate(195_000, :married_filing_jointly, 25, 26)
+        expect(result).to eq(0)
       end
 
-      it 'should return correct value for phase-out income married filing jointly' do
-        expect(roth_ira.calculate(189500, :married_filing_jointly, 25, 26)).to eq(4950)
+      it 'returns correct value for phase-out income' do
+        result = roth_ira.calculate(189_500, :married_filing_jointly, 25, 26)
+        expect(result).to eq(4_950)
       end
 
       context 'over 50' do
-        it 'should return correct value for low income married filing jointly, with one over 50' do
-          expect(roth_ira.calculate(9900, :married_filing_jointly, 50, 49)).to eq(9900)
+        it 'returns correct value for low income, with one over 50' do
+          result = roth_ira.calculate(9_900, :married_filing_jointly, 50, 49)
+          expect(result).to eq(9_900)
         end
 
-        it 'should return correct value for moderate income married filing jointly, with one over 50' do
-          expect(roth_ira.calculate(135000, :married_filing_jointly, 50, 49)).to eq(12000)
+        it 'returns correct value for moderate income, with one over 50' do
+          result = roth_ira.calculate(135_000, :married_filing_jointly, 50, 49)
+          expect(result).to eq(12_000)
         end
 
-        it 'should return correct value for moderate income married filing jointly, with both over 50' do
-          expect(roth_ira.calculate(135000, :married_filing_jointly, 50, 51)).to eq(13000)
+        it 'returns correct value for moderate income, with both over 50' do
+          result = roth_ira.calculate(135_000, :married_filing_jointly, 50, 51)
+          expect(result).to eq(13_000)
         end
 
-        it 'should return correct value for phase-out income married filing jointly, with one over 50' do
-          expect(roth_ira.calculate(189500, :married_filing_jointly, 50, 49)).to eq(5400)
+        it 'returns correct value for phase-out income, with one over 50' do
+          result = roth_ira.calculate(189_500, :married_filing_jointly, 50, 49)
+          expect(result).to eq(5_400)
         end
 
-        it 'should return correct value for phase-out income married filing jointly, with both over 50' do
-          expect(roth_ira.calculate(189500, :married_filing_jointly, 50, 65)).to eq(5850)
+        it 'returns correct value for phase-out income, with both over 50' do
+          result = roth_ira.calculate(189_500, :married_filing_jointly, 50, 65)
+          expect(result).to eq(5_850)
         end
 
-        it 'should return correct value for high income married filing jointly, with both over 50' do
-          expect(roth_ira.calculate(195000, :married_filing_jointly, 55, 62)).to eq(0)
+        it 'returns correct value for high income, with both over 50' do
+          result = roth_ira.calculate(195_000, :married_filing_jointly, 55, 62)
+          expect(result).to eq(0)
         end
 
-        it 'should correctly handle minimum phase out amount of $200' do
-          expect(roth_ira.calculate(193900, :married_filing_jointly, 55, 62)).to eq(400)
+        it 'correctly handles minimum phase out amount of $200' do
+          result = roth_ira.calculate(193_900, :married_filing_jointly, 55, 62)
+          expect(result).to eq(400)
         end
       end
     end
