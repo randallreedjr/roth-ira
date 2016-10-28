@@ -66,7 +66,7 @@ class RothIRA
   end
 
   def spouse_eligible_for_catch_up
-    filing_status == :married_filing_jointly && spouse_age > catch_up_age
+    filing_status == :married_filing_jointly && spouse_age >= catch_up_age
   end
 
   def calculate_phase_out
