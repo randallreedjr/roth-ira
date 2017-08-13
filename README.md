@@ -12,18 +12,18 @@ Contribution and income limits may vary every year, and thus changes to the code
 
 In your gemfile, add
 ```
-gem 'roth-ira', '~> 1.2.0'
+gem 'roth_ira', '~> 1.2.0'
 ```
 then run `bundle install`.
 
 Alternatively, you can manually install the gem.
 ```
-gem install roth-ira
+gem install roth_ira
 ```
 
 You will then need to require the gem in your code file.
 ```
-require "roth_ira"
+require 'roth_ira'
 ```
 
 
@@ -51,4 +51,4 @@ RothIRA.calculate_limit(75000, :married_filing_jointly, 49, 50)
 ```
 
 ## Version Note
-roth-ira follows semantic versioning. New with version 1.0.0, year is no longer an optional parameter and must be specified. Additionally, implementation has shifted from module methods to class instance methods.
+roth_ira follows semantic versioning. New with version 1.0.0, year is no longer an optional parameter and must be specified. Additionally, implementation has shifted from module methods to class instance methods.
