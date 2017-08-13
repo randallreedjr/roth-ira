@@ -21,12 +21,6 @@ Alternatively, you can manually install the gem.
 gem install roth_ira
 ```
 
-You will then need to require the gem in your code file.
-```
-require 'roth_ira'
-```
-
-
 ## Usage
 ### Version 1.0+
 To calculate a contribution limit, initialize a new RothIRA object with the tax year. Then, call `calculate_limit`, and pass MAGI, filing status, age, and (optionally) spouse age.
