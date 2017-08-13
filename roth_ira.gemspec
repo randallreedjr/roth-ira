@@ -1,7 +1,7 @@
-require File.expand_path('../lib/roth-ira/version', __FILE__)
+require File.expand_path('../lib/roth_ira/version', __FILE__)
 
 Gem::Specification.new do |s|
- s.name        = 'roth-ira'
+ s.name        = 'roth_ira'
  s.version     = RothIRA::VERSION
  s.authors     = ['Randall Reed']
  s.email       = ['randallreedjr@gmail.com']
@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
 
  s.summary     = 'Roth IRA Contribution Limit Calculator'
  s.description = 'Determines max Roth IRA contribution amount based on year, filing status, and MAGI'
- s.homepage    = 'http://github.com/randallreedjr/roth-ira'
+ s.homepage    = 'http://github.com/randallreedjr/roth_ira'
 
  s.licenses    = ['MIT']
 end

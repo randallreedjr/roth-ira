@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    roth-ira (1.1.0)
+    roth_ira (1.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -27,8 +27,8 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  roth-ira!
+  roth_ira!
   rspec (~> 3.3)
 
 BUNDLED WITH
-   1.15.1
+   1.15.3
