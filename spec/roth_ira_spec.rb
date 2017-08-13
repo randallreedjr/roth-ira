@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe RothIRA do
   it 'should return correct version string' do
-    expect(RothIRA::VERSION).to eq('1.1.0')
+    expect(RothIRA::VERSION).to eq('1.2.0')
   end
 
   context 'Tax year 2015' do
