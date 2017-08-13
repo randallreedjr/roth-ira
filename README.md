@@ -1,8 +1,8 @@
-[![CircleCI](https://circleci.com/gh/randallreedjr/roth-ira.svg?style=shield)](https://circleci.com/gh/randallreedjr/roth-ira)
-[![Gem Version](https://badge.fury.io/rb/roth-ira.svg)](https://badge.fury.io/rb/roth-ira)
-[![Code Climate](https://codeclimate.com/github/randallreedjr/roth-ira/badges/gpa.svg)](https://codeclimate.com/github/randallreedjr/roth-ira)
+[![CircleCI](https://circleci.com/gh/randallreedjr/roth_ira.svg?style=shield)](https://circleci.com/gh/randallreedjr/roth_ira)
+[![Gem Version](https://badge.fury.io/rb/roth_ira.svg)](https://badge.fury.io/rb/roth_ira)
+[![Code Climate](https://codeclimate.com/github/randallreedjr/roth_ira/badges/gpa.svg)](https://codeclimate.com/github/randallreedjr/roth_ira)
 
-# roth-ira
+# roth_ira
 
 This Ruby gem allows you to calculate maximum Roth IRA contributions based on Modified Adjusted Gross Income (MAGI), Age, Filing Status, and Tax Year. Guidelines for these calculations were taken from the [IRS Publications on Roth IRAs](https://www.irs.gov/retirement-plans/roth-iras).
 
