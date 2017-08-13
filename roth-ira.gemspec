@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
  s.authors     = ['Randall Reed']
  s.email       = ['randallreedjr@gmail.com']
 
- s.files       = Dir.glob('lib/**/*.rb')
+ s.files       = Dir.glob('lib/**/*.rb') + %w(lib/limits.yaml)
  s.test_files  = Dir.glob("spec/**/*.rb")
  s.add_development_dependency 'rspec', '~> 3.3'
 

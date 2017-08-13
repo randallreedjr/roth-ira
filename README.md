@@ -10,7 +10,11 @@ Contribution and income limits may vary every year, and thus changes to the code
 
 ## Installation
 
-In your gemfile, add `gem 'roth-ira'`, then run `bundle install`.
+In your gemfile, add
+```
+gem 'roth-ira', '~> 1.2.0'
+```
+then run `bundle install`.
 
 Alternatively, you can manually install the gem.
 ```
@@ -28,9 +32,9 @@ require "roth_ira"
 To calculate a contribution limit, initialize a new RothIRA object with the tax year. Then, call `calculate_limit`, and pass MAGI, filing status, age, and (optionally) spouse age.
 ```
 > roth_ira = RothIRA.new(2017)
-> roth_ira.calculate_limit(75000, :single, 25)
+> roth_ira.calculate(75000, :single, 25)
 5500
-> RothIRA.calculate_limit(75000, :married_filing_jointly, 25)
+> RothIRA.calculate(75000, :married_filing_jointly, 25)
 11000
 ```
 
