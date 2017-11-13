@@ -331,4 +331,69 @@ describe RothIRA do
       end
     end
   end
+
+  context 'Tax year 2018' do
+    let(:roth_ira) { RothIRA.new(2018) }
+    context 'Single' do
+      it 'returns maximum contribution for bottom of income limit' do
+        expect(roth_ira.calculate(120000, :single, 40)).to eq(5500)
+      end
+
+      it 'returns maximum contribution for bottom of income limit with catch-up' do
+        expect(roth_ira.calculate(120000, :single, 50)).to eq(6500)
+      end
+
+      it 'returns zero contribution for top of income limit' do
+        expect(roth_ira.calculate(135000, :single, 40)).to eq(0)
+      end
+
+      it 'returns maximum contribution for bottom of income limit with catch-up' do
+        expect(roth_ira.calculate(135000, :single, 50)).to eq(0)
+      end
+    end
+
+    context 'Head of Household' do
+      it 'returns maximum contribution for bottom of income limit' do
+        expect(roth_ira.calculate(120000, :head_of_household, 40)).to eq(5500)
+      end
+
+      it 'returns maximum contribution for bottom of income limit with catch-up' do
+        expect(roth_ira.calculate(120000, :head_of_household, 50)).to eq(6500)
+      end
+
+      it 'returns zero contribution for top of income limit' do
+        expect(roth_ira.calculate(135000, :head_of_household, 40)).to eq(0)
+      end
+
+      it 'returns maximum contribution for bottom of income limit with catch-up' do
+        expect(roth_ira.calculate(135000, :head_of_household, 50)).to eq(0)
+      end
+    end
+
+    context 'Married Filing Jointly' do
+      it 'returns maximum contribution for bottom of income limit' do
+        expect(roth_ira.calculate(189000, :married_filing_jointly, 40, 40)).to eq(11000)
+      end
+
+      it 'returns maximum contribution for bottom of income limit with one catch-up' do
+        expect(roth_ira.calculate(189000, :married_filing_jointly, 40, 50)).to eq(12000)
+      end
+
+      it 'returns maximum contribution for bottom of income limit with both catch-up' do
+        expect(roth_ira.calculate(189000, :married_filing_jointly, 50, 50)).to eq(13000)
+      end
+
+      it 'returns zero contribution for top of income limit' do
+        expect(roth_ira.calculate(199000, :married_filing_jointly, 40, 40)).to eq(0)
+      end
+
+      it 'returns maximum contribution for bottom of income limit with one catch-up' do
+        expect(roth_ira.calculate(199000, :married_filing_jointly, 40, 50)).to eq(0)
+      end
+
+      it 'returns maximum contribution for bottom of income limit with both catch-up' do
+        expect(roth_ira.calculate(199000, :married_filing_jointly, 50, 50)).to eq(0)
+      end
+    end
+  end
 end
