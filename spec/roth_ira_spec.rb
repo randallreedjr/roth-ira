@@ -5,6 +5,26 @@ describe RothIRA do
     expect(RothIRA::VERSION).to eq('1.2.0')
   end
 
+  context 'Invalid tax years' do
+    it 'should raise an ArgumentError if tax year is before 2015' do
+      expect{RothIRA.new(2014)}.to raise_error ArgumentError
+    end
+
+    it 'should raise an ArgumentError if tax year is after 2018' do
+      expect{RothIRA.new(2019)}.to raise_error ArgumentError
+    end
+  end
+
+  context 'Valid tax years' do
+    it 'should not raise an ArgumentError if tax year is 2015' do
+      expect{RothIRA.new(2015)}.to_not raise_error
+    end
+
+    it 'should not raise an ArgumentError if tax year is 2018' do
+      expect{RothIRA.new(2018)}.to_not raise_error
+    end
+  end
+
   context 'Tax year 2015' do
     let(:roth_ira) { RothIRA.new(2015) }
     context 'Single' do
