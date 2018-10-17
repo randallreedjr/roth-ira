@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    roth_ira (1.2.1)
+    roth_ira (1.2.2)
 
 GEM
   remote: https://rubygems.org/
@@ -31,4 +31,4 @@ DEPENDENCIES
   rspec (~> 3.3)
 
 BUNDLED WITH
-   1.16.0
+   1.16.2
