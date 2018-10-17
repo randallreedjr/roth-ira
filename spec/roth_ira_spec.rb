@@ -282,7 +282,7 @@ describe RothIRA do
         expect(roth_ira.calculate(133000, :single, 40)).to eq(0)
       end
 
-      it 'returns maximum contribution for bottom of income limit with catch-up' do
+      it 'returns zero contribution for top of income limit with catch-up' do
         expect(roth_ira.calculate(133000, :single, 50)).to eq(0)
       end
     end
@@ -322,11 +322,11 @@ describe RothIRA do
         expect(roth_ira.calculate(196000, :married_filing_jointly, 40, 40)).to eq(0)
       end
 
-      it 'returns maximum contribution for bottom of income limit with one catch-up' do
+      it 'returns zero contribution for top of income limit with one catch-up' do
         expect(roth_ira.calculate(196000, :married_filing_jointly, 40, 50)).to eq(0)
       end
 
-      it 'returns maximum contribution for bottom of income limit with both catch-up' do
+      it 'returns zero contribution for top of income limit with both catch-up' do
         expect(roth_ira.calculate(196000, :married_filing_jointly, 50, 50)).to eq(0)
       end
     end
@@ -347,7 +347,7 @@ describe RothIRA do
         expect(roth_ira.calculate(135000, :single, 40)).to eq(0)
       end
 
-      it 'returns maximum contribution for bottom of income limit with catch-up' do
+      it 'returns zero contribution for top of income limit with catch-up' do
         expect(roth_ira.calculate(135000, :single, 50)).to eq(0)
       end
     end
@@ -387,11 +387,11 @@ describe RothIRA do
         expect(roth_ira.calculate(199000, :married_filing_jointly, 40, 40)).to eq(0)
       end
 
-      it 'returns maximum contribution for bottom of income limit with one catch-up' do
+      it 'returns zero contribution for top of income limit with one catch-up' do
         expect(roth_ira.calculate(199000, :married_filing_jointly, 40, 50)).to eq(0)
       end
 
-      it 'returns maximum contribution for bottom of income limit with both catch-up' do
+      it 'returns zero contribution for top of income limit with both catch-up' do
         expect(roth_ira.calculate(199000, :married_filing_jointly, 50, 50)).to eq(0)
       end
     end
