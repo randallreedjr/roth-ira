@@ -6,13 +6,13 @@
 
 This Ruby gem allows you to calculate maximum Roth IRA contributions based on Modified Adjusted Gross Income (MAGI), Age, Filing Status, and Tax Year. Guidelines for these calculations were taken from the [IRS Publications on Roth IRAs](https://www.irs.gov/retirement-plans/roth-iras).
 
-Contribution and income limits may vary every year, and thus changes to the code will be required. This gem is currently up to date for __Tax Years 2015 - 2017__.
+Contribution and income limits may vary every year, and thus changes to the code will be required. This gem is currently up to date for __Tax Years 2015 - 2019__.
 
 ## Installation
 
 In your gemfile, add
 ```
-gem 'roth_ira', '~> 1.2.0'
+gem 'roth_ira', '~> 1.2.2'
 ```
 then run `bundle install`.
 
