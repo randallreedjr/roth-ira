@@ -89,3 +89,21 @@
     :minimum_phase_out: 400
   :catch_up_contribution: 1000
   :catch_up_age: 50
+2020:
+  :single:
+    :lower_income_limit: 124000
+    :upper_income_limit: 139000
+    :contribution_limit: 6000
+    :minimum_phase_out: 200
+  :head_of_household:
+    :lower_income_limit: 124000
+    :upper_income_limit: 139000
+    :contribution_limit: 6000
+    :minimum_phase_out: 200
+  :married_filing_jointly:
+    :lower_income_limit: 196000
+    :upper_income_limit: 206000
+    :contribution_limit: 12000
+    :minimum_phase_out: 400
+  :catch_up_contribution: 1000
+  :catch_up_age: 50
