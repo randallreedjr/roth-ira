@@ -4,7 +4,7 @@ class RothIRA
   attr_reader :age, :agi, :filing_status, :limits, :spouse_age, :year
 
   def initialize(year)
-    raise(ArgumentError, "Invalid Tax Year #{year}") unless year.between?(2015, 2020)
+    raise(ArgumentError, "Invalid Tax Year #{year}") unless year.between?(2015, 2021)
     @year = year
     @limits = YAML.load(File.read(__dir__ + "/limits.yaml"))[year]
   end
